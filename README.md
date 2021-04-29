@@ -6,27 +6,29 @@
 apps
 ├── jisu(极速)
 │   ├── activity(活动)
-│   │   ├── test(活动项目)
+│   │   ├── test(project活动项目)
 │   │   │   ├── App.css
 │   │   │   ├── App.jsx
 │   │   │   ├── index.html
 │   │   │   └── main.jsx
-│   │   └── test2(活动项目)
+│   │   └── test2(project活动项目)
+|   |   |__ ...project
 │   └── hybrid（native）
 └── main(主版)
     ├── activity
-    │   ├── testmain
+    │   ├── testmain(project活动项目)
     │   │   ├── App.css
     │   │   ├── App.jsx
     │   │   ├── index.css
     │   │   ├── index.html
     │   │   └── main.jsx
-    │   └── testmain2
-    │       ├── App.css
-    │       ├── App.jsx
-    │       ├── index.css
-    │       ├── index.html
-    │       └── main.jsx
+    │   └── testmain2(project活动项目)
+    │   |    ├── App.css
+    │   |    ├── App.jsx
+    │   |    ├── index.css
+    │   |    ├── index.html
+    │   |    └── main.jsx
+    |   |___...project
     └── hybrid
 ```
 每一个project对应一个独立的项目，单独构建，单独打包，在同一个项目中维护，适用于ToC端的应用
