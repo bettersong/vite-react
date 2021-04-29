@@ -2,6 +2,7 @@
 
 基于vite构建的react多项目应用
 项目结构
+```
 apps
 ├── jisu(极速)
 │   ├── activity(活动)
@@ -27,7 +28,7 @@ apps
     │       ├── index.html
     │       └── main.jsx
     └── hybrid
-
+```
 每一个project对应一个独立的项目，单独构建，单独打包，在同一个项目中维护，适用于ToC端的应用
 
 ###### 主要构建脚本在build文件夹下
