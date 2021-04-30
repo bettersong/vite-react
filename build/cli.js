@@ -3,26 +3,29 @@ const path = require("path");
 // const { fstat } = require("fs");
 const fs = require("fs");
 
-const arg = process.argv.slice(2);
-const action = arg[0];
-const appName = arg[1];
-const projectName = arg[2];
+
+console.log(process.argv,'sss')
+const action = process.argv[2];
+const arg = process.argv.slice(3);
+const appName = arg[0];
+const startPath = arg.join("/");
+
 (async () => {
   console.log(arg)
   if(!appName) throw new Error("APP_NAME 不能缺少⚠️")
   // 启动
   if (action === 'start') {
-    runTask(appName,projectName)
+    runTask(appName)
   }
   
 })();
 function getProject(path){
-  return new Promise((res,rej)=>{
+  return new Promise((resolve,rej)=>{
     fs.stat(path,(err,status)=>{
       if(err){
-        res(err)
+        resolve(err)
       }else{
-        res(status)
+        resolve(status)
       }
     })
   })
@@ -36,17 +39,17 @@ function getProject(path){
 //   }
 // }
 //启动项目
-async function runTask(appName,projectName){
+async function runTask(appName){
   const cmds = []
-  // console.log(appName,path.resolve(__dirname,`../apps/${appName}/${projectName}`));
-  const runProPath = path.resolve(__dirname,`../apps/${appName}/${projectName}`)
-  // 检测项目是否存在
-  const res = await getProject(runProPath);
+  console.log(appName,path.resolve(__dirname,`../apps/${startPath}`));
+  const runProPath = path.resolve(__dirname,`../apps/${startPath}`)
+  // 检测项目是否存在,项目下必须包含index.html入口文件
+  const res = await getProject(runProPath+'/index.html');
   if(res.errno<0){
     throw new Error("没有找到可启动的项目😭")
   }else{
     //
-    cmds.push(`vite serve ${runProPath}/test`)
+    cmds.push(`vite serve ${runProPath}`)
   }
   const cmd = cmds.join(" && ");
   const { code } = shell.exec(cmd);
