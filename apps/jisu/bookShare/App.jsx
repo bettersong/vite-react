@@ -6,8 +6,7 @@ function App() {
 
   return (
     <div className="App">
-      hello, 项目启动成功
-      jisu/activity/test
+      这是书籍分享项目
     </div>
   )
 }
